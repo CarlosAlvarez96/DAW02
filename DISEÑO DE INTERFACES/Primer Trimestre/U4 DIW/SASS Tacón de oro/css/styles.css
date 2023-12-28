@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header,
+nav,
+.main,
+section,
+footer {
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F74780;
+}
+
+.logoImg {
+  max-width: 10%;
+}
+
+.company-name {
+  font-family: "Dancing Script", cursive;
+  font-size: 40px;
+  color: #E8C33E;
+}
+
+.img-container > img {
+  max-width: 70%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFE4EC;
+}
+nav a {
+  border: #000 2px solid;
+  padding: 10px;
+  background-color: #fff;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+}
+nav .search-form,
+nav .img-container,
+nav .footer-column {
+  display: flex;
+  align-items: center;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  margin: 0;
+  background-color: #F74780;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+section {
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+#brand-presentation,
+#products,
+#leather-process,
+#store-locator {
+  display: flex;
+  justify-content: center;
+}
+#brand-presentation > div,
+#products > div,
+#leather-process > div,
+#store-locator > div {
+  flex-direction: row;
+  width: 50%;
+}
+#brand-presentation > div.img-container,
+#products > div.img-container,
+#leather-process > div.img-container,
+#store-locator > div.img-container {
+  margin-left: 5%;
+}
+#brand-presentation > div > *,
+#products > div > *,
+#leather-process > div > *,
+#store-locator > div > * {
+  font-size: 150%;
+  font-family: "Montserrat", sans-serif;
+  margin: 7%;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.product-container .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-container .img-container img {
+  max-width: 70%;
+}
+
+@media screen and (max-width: 780px) {
+  .logoImg {
+    max-width: 30%;
+  }
+  .img-container {
+    display: none;
+  }
+  #brand-presentation > div,
+  #leather-process > div,
+  #store-locator > div {
+    width: 100%;
+  }
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul {
+    flex-direction: row;
+  }
+  .search-form {
+    order: 2;
+  }
+  .footer-column {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 480px) {
+  .logoImg {
+    max-width: 30%;
+  }
+  .img-container {
+    display: none;
+  }
+  #brand-presentation > div,
+  #leather-process > div,
+  #store-locator > div {
+    width: 100%;
+  }
+  nav ul {
+    flex-direction: column;
+  }
+  nav ul li {
+    padding: 10px;
+    align-items: center;
+  }
+  .footer-column {
+    padding: 10px;
+  }
+  footer {
+    grid-template-columns: 1fr;
+  }
+  .img-container > img {
+    max-width: 100%;
+  }
+}
+.btn {
+  padding: 10px;
+  border: 2px solid #000;
+  background-color: #fff;
+}
+
+.card {
+  border: 1px solid #ccc;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #F74780;
+  color: #fff;
+}
+footer > div {
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=styles.css.map */

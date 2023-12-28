@@ -1,0 +1,21 @@
+@import "variables";
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $body-background-color;
+}
+.logoImg {
+    max-width: $logo-max-width-lg;
+}
+
+.company-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #E8C33E;
+}
+
+.img-container>img {
+    max-width: $img-max-width-lg;
+}

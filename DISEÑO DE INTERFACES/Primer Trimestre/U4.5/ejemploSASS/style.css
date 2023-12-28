@@ -1,0 +1,27 @@
+.header {
+  background-color: #bbb;
+}
+
+.btn-error {
+  background-color: red;
+}
+
+.container {
+  background-image: url("./fondo.jpg");
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:hover {
+  color: pink;
+}
+a:visited {
+  color: #00f;
+}
+a:active {
+  color: #0f0;
+}
+
+/*# sourceMappingURL=style.css.map */

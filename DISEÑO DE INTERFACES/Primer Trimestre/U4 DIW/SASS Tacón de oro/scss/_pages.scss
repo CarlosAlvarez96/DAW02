@@ -1,0 +1,46 @@
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  margin: 0;
+  background-color: $body-background-color;
+}
+
+
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+section {
+  border: 1px solid #ccc;
+  background-color: $section-background-color;
+}
+
+
+
+
+#brand-presentation,
+#products,
+#leather-process,
+#store-locator {
+  display: flex;
+  justify-content: center;
+
+  >div {
+    flex-direction: row;
+    width: 50%;
+
+    &.img-container {
+      margin-left: 5%;
+    }
+
+    >* {
+      font-size: $font-size-lg;
+      font-family: "Montserrat", sans-serif;
+      margin: 7%;
+    }
+  }
+}

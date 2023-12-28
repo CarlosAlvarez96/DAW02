@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+</head>
+<body>
+    <h1>Panel de Administrador</h1>
+
+    <?php
+        $users = UserRepository::getUsers();
+        echo '<br>';
+        
+        foreach($users as $user){
+            echo '<h2>'.$user->getUsername().'</h2>';
+            if($user->getRol()==1){
+                echo '<a href="index.php?c=admin&admin='.$user->getId().'&ban=1">Banear</a>';
+            }else if($user->getRol()==0){
+                echo '<a href="index.php?c=admin&admin='.$user->getId().'&pardon=1">Desbanear</a>';
+            } 
+            echo '<br>';
+        }
+        echo '<br><br>';
+        ?>
+
+    <a href='index.php'>Volver a la tienda</a>
+</body>
+</html>

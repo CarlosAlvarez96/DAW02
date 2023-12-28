@@ -1,0 +1,13 @@
+.container {
+    width: 1280px;
+}
+
+.container h1 {
+    width: 1024px;
+    border: 2px solid green;
+}
+
+.container h2 {
+    width: 768px;
+    border: 2px solid orange;
+}

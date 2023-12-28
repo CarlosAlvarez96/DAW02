@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+}
+
+.font-tester {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Fuentes personalizadas */
+.abel {
+    font-family: 'Abel', sans-serif;
+}
+
+.abril {
+    font-family: 'Abril Fatface', cursive;
+}
+
+.alegreya {
+    font-family: 'Alegreya', serif;
+}
+
+.arima {
+    font-family: 'Arima Madurai', cursive;
+}
+
+.dancing {
+    font-family: 'Dancing Script', cursive;
+}
+
+.dosis {
+    font-family: 'Dosis', sans-serif;
+}
+
+.merriweather {
+    font-family: 'Merriweather', serif;
+}
+
+.oleo {
+    font-family: 'Oleo Script', cursive;
+}
+
+.overlock {
+    font-family: 'Overlock', sans-serif;
+}
+
+.pt-serif {
+    font-family: 'PT Serif', serif;
+}
+
+.pacifico {
+    font-family: 'Pacifico', cursive;
+}
+
+.playball {
+    font-family: 'Playball', cursive;
+}
+
+.playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+.share {
+    font-family: 'Share', sans-serif;
+}
+
+.unica {
+    font-family: 'Unica One', cursive;
+}
+
+.vibur {
+    font-family: 'Vibur', cursive;
+}

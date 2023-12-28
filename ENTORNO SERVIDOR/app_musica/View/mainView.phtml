@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música</title>
+    <!-- Agregamos Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0e0e10;
+            /* Fondo oscuro similar a Spotify */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #fff;
+            /* Letras en blanco */
+        }
+
+        a {
+            text-decoration: none;
+            color: #1db954;
+            /* Verde brillante similar a Spotify */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #535353;
+            /* Gris oscuro similar a Spotify */
+            border-radius: 4px;
+            background-color: #121212;
+            /* Fondo oscuro similar a Spotify */
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        input[type="submit"] {
+            background-color: #1db954;
+            /* Verde brillante similar a Spotify */
+            color: #fff;
+            /* Texto blanco */
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #25a056;
+            /* Verde ligeramente más oscuro al pasar el mouse */
+        }
+
+        .playlist-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .profile-image {
+            max-width: 15%;
+        }
+
+
+        /* Resto de estilos... */
+    </style>
+</head>
+
+<body class="mx-auto max-w-screen-2xl p-4">
+
+
+    <?php
+    if (!empty($_SESSION['user'])) {
+        echo "<h3 class='text-xl mb-4'>Bienvenido/a " . $_SESSION['name'] . "</h3>";
+        echo "<img src='" . $_SESSION['img'] . "' alt='Profile Image' class='w-full h-56 object-cover mb-4 profile-image'>";
+        echo "<a href='index.php?c=logout' class='mr-2 text-blue-500'>Cerrar sesión</a> - ";
+        echo "<a href='index.php?c=createList' class='mr-2 text-blue-500'>Crear playlist</a> - ";
+        echo "<a href='index.php?c=addSong' class='text-blue-500'>Subir canción</a>";
+    } else {
+        echo '<h1 class="text-2xl mb-4">Inicia sesión</h1>';
+        echo '<form method="POST" action="index.php?c=user" class="mb-4">
+                <input type="text" name="name" placeholder="Usuario" class="mr-2 p-2 border border-gray-300"/>
+                <input type="password" name="password" placeholder="Contraseña" class="mr-2 p-2 border border-gray-300"/>
+                <input type="submit" name="login" value="Log in" class="p-2 bg-blue-500 text-white"/>
+            </form>';
+        echo '<hr><br>';
+        echo '<h1>¿No tienes usuario? Regístrate</h1>';
+        echo '<form method="POST" action="index.php?c=user">
+            <input type="text" name="name" placeholder="Usuario"/><br><br>
+            <input type="password" name="pass" placeholder="Contraseña"/><br><br>
+            <input type="file" name="profileImg" required class="mb-4 p-2 border border-gray-300"/>
+            <input type="submit" name="signUp" value="signUp"/>
+            </form>';
+    }
+    echo '<br><hr><br>';
+    echo '<h1>Añadir tus canciones</h1>';
+    echo '<form method="POST" action="index.php?c=song" class="mb-4">
+            <input type="text" name="tituloSong" placeholder="Busca aquí" class="mr-2 p-2 border border-gray-300"/>
+            <input type="submit" name="buscar" value="Buscar" class="p-2 bg-blue-500 text-white"/>
+            <select name="order" class="p-2 border border-gray-300">
+                <option value="Asc">Ascendente</option>
+                <option value="Non" selected>Ninguno</option>
+                <option value="Desc">Descendente</option>
+            </select>
+        </form>';
+
+    if (!empty($_SESSION['user'])) {
+        echo "<h1 class='text-2xl mb-4'>Tus playlists</h1>";
+        if ($playlists == []) {
+            echo "<h3>Sin resultados</h3>";
+        }
+        if (!empty($playlists)) {
+            echo '<div class="playlist-container">';
+            foreach ($playlists as $playlist) {
+                echo '<a href="index.php?p=' . $playlist->getId() . '" class="block mb-4">
+                        <img src="' . $playlist->getImg() . '" alt="Playlist Image" class="w-56 h-56 object-cover mb-2">
+                        <h2 class="text-xl">' . $playlist->getTittle() . '</h2>
+                        <h4 class="text-sm"> ' . $playlist->getSongNum() . ' canciones - ' . PlaylistRepository::playlistDuration($playlist->getSongs()) . '</h4>
+                        <h4 class="text-sm">By: ' . $playlist->getAuthorName() . '</h4>
+                    </a>';
+            }
+            echo '</div>';
+        }
+        echo "<h1 class='text-2xl mb-4'>Descubre otras playlists</h1>";
+        if ($playlists2 == []) {
+            echo "<h3>Sin resultados</h3>";
+        }
+        if (!empty($playlists2)) {
+            echo '<div class="playlist-container">';
+            foreach ($playlists2 as $playlist2) {
+                if (PlaylistRepository::playlistnotliked($playlist2->getId()) == true) {
+                    echo "<a href='index.php?p=" . $playlist2->getId() . "' class='block mb-4'>
+                            <img src='" . $playlist2->getImg() . "' alt='Playlist Image' class='w-56 h-56 object-cover mb-2'>
+                            <h2 class='text-xl'>" . $playlist2->getTittle() . "</h2>
+                            <h4 class='text-sm'> " . $playlist2->getSongNum() . " canciones - " . PlaylistRepository::playlistDuration($playlist2->getSongs()) . "</h4>
+                            <h4 class='text-sm'>By: " . $playlist2->getAuthorName() . "</h4>
+                            <a href='index.php?i=" . $playlist2->getId() . "' class='text-blue-500'>Seguir</a>
+                        </a><br><br>";
+                }
+            }
+            echo '</div>';
+        }
+    }
+    ?>
+
+    <h1 class='text-2xl mb-4'>Canciones</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <?php
+        foreach ($songs as $song) {
+            echo "<div class='mb-8'>
+                <h2 class='text-xl'>" . $song->getTittle() . "</h2>
+                <img src='" . $song->getImg() . "' alt='Song Image' class='w-full h-56 object-cover mb-4'>
+                <audio src='" . $song->getfile() . "' controls class='w-full'></audio>
+            </div>";
+        }
+        ?>
+    </div>
+
+
+</body>
+
+</html>

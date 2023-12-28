@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "lines": [
+            {
+                "idProduct": "1",
+                "idPedido": "1",
+                "lot": "3",
+                "state": "1"
+            },
+            {
+                "idProduct": "2",
+                "idPedido": "1",
+                "lot": "4",
+                "state": "1"
+            }
+        ],
+        "idUser": "1",
+        "state": "1",
+        "datetime": "2023-11-10 13:07:58",
+        "total": "214.96"
+    },
+    {
+        "id": "3",
+        "lines": [
+            {
+                "idProduct": "1",
+                "idPedido": "3",
+                "lot": "1",
+                "state": "1"
+            },
+            {
+                "idProduct": "2",
+                "idPedido": "3",
+                "lot": "7",
+                "state": "1"
+            }
+        ],
+        "idUser": "1",
+        "state": "1",
+        "datetime": "2023-11-10 13:13:36",
+        "total": "269.92"
+    }
+]

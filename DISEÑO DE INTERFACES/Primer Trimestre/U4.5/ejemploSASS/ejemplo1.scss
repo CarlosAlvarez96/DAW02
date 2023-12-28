@@ -1,0 +1,42 @@
+//Declaración de variables
+$grey: #bbb;
+$header-background: $grey;
+$link-normal: #000;
+$link-visited: #00f;
+$link-active:#0f0;
+$link-hover: pink;
+
+.header{
+    background-color: $header-background;
+}
+$sizes:(40px,80px,160px);
+$breakpoints:(
+    "pequeño": 576px,
+    "mediano": 768px,
+    "grande": 997px
+    );
+
+$button-type: "error";
+$btn-color:red;
+.btn-#{$button-type}{
+    background-color: $btn-color;
+}
+
+$fondo:"./fondo.jpg";
+.container{
+    background-image: url('#{$fondo}');
+}
+
+a{
+    color:$link-normal;
+    text-decoration: none;
+    &:hover{
+        color: $link-hover;
+    }
+    &:visited{
+        color: $link-visited;
+    }
+    &:active{
+        color: $link-active;
+    }
+}

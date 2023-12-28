@@ -1,0 +1,17 @@
+@import "variables";
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            max-width: $img-max-width-lg;
+        }
+    }
+}

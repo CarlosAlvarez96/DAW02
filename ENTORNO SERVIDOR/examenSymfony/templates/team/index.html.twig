@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Team index{% endblock %}
+
+{% block body %}
+    <h1>Mi equipo</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+            <tr>
+                <td>{% for pokemon in team.getPokemon() %}
+                        <div>
+                            ID: {{ pokemon.id }}<br>
+                            Name: {{ pokemon.name }}<br>
+                            Image: <img src="{{ pokemon.img }}" alt="Pokemon Image" style="max-width: 300px;"><br>
+                            Type: {{ pokemon.type }}<br>
+                        </div>
+                        
+                    {% endfor %}</td>
+                {# <tr>
+                    <a href="{{ path('app_team_show', {'id': team.id}) }}">show</a>
+                    <br> #}
+                    <a href="{{ path('app_team_edit', {'id': team.id}) }}">Editar equipo</a>
+       
+                </tr>
+            </tr>
+             {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_team_new') }}">Create new</a>
+{% endblock %}

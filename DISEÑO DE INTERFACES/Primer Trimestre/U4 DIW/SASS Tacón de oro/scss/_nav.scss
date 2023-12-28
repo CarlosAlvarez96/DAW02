@@ -1,0 +1,25 @@
+@import "variables";
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $nav-background-color;
+
+    a {
+        border: #000 2px solid;
+        padding: 10px;
+        background-color: #fff;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+    }
+
+    .search-form,
+    .img-container,
+    .footer-column {
+        display: flex;
+        align-items: center;
+    }
+}

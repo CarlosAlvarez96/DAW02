@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Playlist - Reproductor de Música</title>
+    <!-- Agregamos Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0e0e10;
+            /* Fondo oscuro similar a Spotify */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #fff;
+            /* Letras en blanco */
+        }
+
+        a {
+            text-decoration: none;
+            color: #1db954;
+            /* Verde brillante similar a Spotify */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #535353;
+            /* Gris oscuro similar a Spotify */
+            border-radius: 4px;
+            background-color: #121212;
+            /* Fondo oscuro similar a Spotify */
+            color: #fff;
+            /* Texto blanco */
+        }
+
+        input[type="submit"] {
+            background-color: #1db954;
+            /* Verde brillante similar a Spotify */
+            color: #fff;
+            /* Texto blanco */
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #25a056;
+            /* Verde ligeramente más oscuro al pasar el mouse */
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body class="mx-auto max-w-screen-2xl p-4">
+    <?php
+    echo "<h3>Bienvenido " . $_SESSION['name'] . "</h3>";
+    echo "<a href='index.php'>Volver</a><br><br>";
+    echo '<a href="index.php?p=' . $playlist->getId() . '"><img src="' . $playlist->getImg() . '" width="220px" height="220px" ></img></a></br>';
+    echo $playlist->getTittle() . " - " . PlaylistRepository::playlistDuration($playlist->getSongs()) . "</br></br>";
+    echo '<form action="index.php?p=' . $playlist->getId() . '&&c=modList" method="post">';
+    ?>
+
+    <label for="cancion">Añade a tu lista:</label>
+    <input list="cancion" name="cancion" id="canciones">
+    <datalist id="cancion">
+        <?php
+        foreach ($songs as $song) {
+            echo '<option value="' . $song->getTittle() . '"/>';
+        }
+        ?>
+    </datalist>
+    <input name="modify" type="submit">
+    </form>
+    <?php
+
+    echo '<div class="grid-container">';
+    foreach ($songs2 as $song2) {
+        echo '<div class="mb-8">
+                <h2 class="text-xl">' . $song2->getTittle() . '</h2>
+                <img src="' . $song2->getImg() . '" width="220px" height="220px"></img></br>
+                <audio src="' . $song2->getfile() . '" controls style="width: 220px;"></audio>
+            </div>';
+    }
+    echo '</div>';
+    ?>
+</body>
+
+</html>

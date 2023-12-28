@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+$body-background-color: #F74780;
+$nav-background-color: #FFE4EC;
+$footer-background-color: #F74780;
+$footer-text-color: #fff;
+$section-background-color: #fff;
+
+// Breakpoints
+$breakpoint-lg: 780px;
+$breakpoint-sm: 480px;
+
+// Tamaños de fuente
+$font-size-lg: 150%;
+$font-size-sm: 30px; // Cambiar por el tamaño de fuente deseado
+
+// Ancho de imágenes
+$img-max-width-lg: 70%;
+$img-max-width-sm: 100%;
+
+// Tamaños de logo
+$logo-max-width-lg: 10%;
+$logo-max-width-sm: 30%;
+
+// Otros
+$card-border: 1px solid #ccc;
+$btn-border: 2px solid #000;
+$btn-bg: #fff;

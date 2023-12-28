@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pokemon index{% endblock %}
+
+{% block body %}
+    <h1>Pokemon index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Num</th>
+                <th>Type</th>
+                <th>Img</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pokemon in pokemon %}
+            <tr>
+                <td>{{ pokemon.id }}</td>
+                <td>{{ pokemon.name }}</td>
+                <td>{{ pokemon.num }}</td>
+                <td>{{ pokemon.type }}</td>
+                <td><img src="{{ pokemon.img }}" alt="Pokemon Image" style="max-width: 300px;"></td>
+                </tr>
+
+                <td>      
+                    <a href="{{ path('app_pokemon_show', {'id': pokemon.id}) }}">show</a>
+                    {% if is_granted("ROLE_ADMIN")%}
+                    <a href="{{ path('app_pokemon_edit', {'id': pokemon.id}) }}">edit</a>      
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% if is_granted("ROLE_ADMIN")%}
+    <a href="{{ path('app_pokemon_new') }}">Create new</a>
+{% endif %}
+    
+{% endblock %}

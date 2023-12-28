@@ -1,0 +1,13 @@
+@import "variables";
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: $footer-background-color;
+    color: $footer-text-color;
+
+    >div {
+        justify-content: center;
+        align-items: center;
+    }
+}

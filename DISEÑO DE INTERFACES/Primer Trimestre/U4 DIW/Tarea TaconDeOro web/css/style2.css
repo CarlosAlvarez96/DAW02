@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    margin: 0;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+header,
+nav,
+.main,
+section,
+footer {
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F74780;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFE4EC;
+}
+
+.navbar-a {
+    border: #000 2px solid;
+    padding: 10px;
+    background-color: #fff;
+    
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+}
+
+.search-form,
+.img-container,
+.footer-column {
+    display: flex;
+    align-items: center;
+}
+
+aside>nav>ul {
+    list-style: none;
+}
+
+aside>nav>ul>li {
+    margin-bottom: 10px;
+}
+
+aside {
+    background-color: #FFE4EC;
+    font-size: 300%;
+    justify-content: center;
+}
+
+article>div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+.product {
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    height: 100%;
+    max-width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 10px;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #F74780;
+    color: #fff;
+}
+
+footer>div {
+    justify-content: center;
+    align-items: center;
+}
+
+.logoImg {
+    max-width: 10%;
+}
+
+.company-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #E8C33E;
+}
+#product-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: "Montserrat", cursive;
+    font-size: 50%;
+}
+#navbar-category {
+    list-style: none;
+    padding: 50px;
+    margin: 0;
+    
+}
+
+#navbar-category li {
+    margin-bottom: 10px;
+}
+
+#navbar-category a {
+    text-decoration: none;
+    color: #F74780;
+}
+
+#navbar-category a:hover {
+    font-weight: bold;
+}
+@media screen and (max-width: 780px) {
+    header {
+        flex-direction: row;
+        justify-content: center; 
+        align-items: center;
+    }
+    .header-nav{
+        flex-direction: column;
+            align-items: center;
+    }
+    
+    .logoImg {
+        max-width: 50%; 
+    }
+
+    .company-name {
+        font-size: 30px; 
+    }
+
+    .search-form {
+        order: 2;
+        margin-top: 10px; 
+    }
+
+    #main {
+        grid-template-columns: 100%; 
+    }
+
+    aside {
+        order: 1; 
+        text-align: center; 
+    }
+
+    article {
+        order: 2; 
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li{
+        padding: 10px;
+        align-items: center;
+    }
+
+    .navbar{
+        flex-direction: column;
+    }
+
+    .footer-column {
+        padding: 10px;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+    article>div {
+        grid-template-columns: 1fr; 
+        gap: 10px; 
+    }
+}

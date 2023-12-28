@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    margin: 0;
+}
+
+header,
+nav,
+.main,
+section,
+footer {
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F74780;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFE4EC;
+}
+
+nav a {
+    border: #000 2px solid;
+    padding: 10px;
+    background-color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.search-form,
+.img-container,
+.footer-column {
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+}
+
+section {
+    border: 1px solid #ccc;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #F74780;
+    color: #fff;
+}
+
+footer>div {
+    justify-content: center;
+    align-items: center;
+}
+
+.logoImg {
+    max-width: 10%;
+}
+
+.company-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+    color: #E8C33E;
+}
+
+.img-container>img {
+    max-width: 70%;
+}
+
+#brand-presentation,
+#products,
+#leather-process,
+#store-locator {
+    display: flex;
+    justify-content: center;
+}
+
+#brand-presentation>div,
+#leather-process>div,
+#store-locator>div {
+    flex-direction: row;
+    width: 50%;
+}
+
+#brand-presentation>div.img-container,
+#leather-process>div.img-container,
+#store-locator>div.img-container {
+    margin-left: 5%;
+}
+
+#brand-presentation>div>*,
+#leather-process>div>*,
+#store-locator>div>* {
+    font-size: 150%;
+    font-family: "Montserrat", sans-serif;
+    margin: 7%;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product-container .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-container .img-container img {
+    max-width: 90%;
+}
+
+@media screen and (max-width: 780px) {
+    .img-container {
+        display: none;
+    }
+
+    .logoImg {
+        max-width: 50%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    
+    .search-form {
+        order: 2;
+    }
+
+    nav ul {
+        flex-direction: row;
+    }
+
+    .footer-column {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #brand-presentation>div,
+    #leather-process>div,
+    #store-locator>div {
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+   
+
+    .logoImg {
+        max-width: 30%;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li{
+        padding: 10px;
+        align-items: center;
+    }
+
+    .img-container {
+        display: none;
+    }
+
+    .footer-column {
+        padding: 10px;
+    }
+
+    footer {
+        grid-template-columns: 1fr;
+    }
+
+    #brand-presentation>div,
+    #leather-process>div,
+    #store-locator>div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .img-container>img {
+        max-width: 100%;
+    }
+}

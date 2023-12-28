@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+</head>
+
+<body>
+    <h1>Registro de pedidos</h1>
+
+    <?php
+    foreach ($_SESSION['user']->getOrders() as $pedido) {
+        echo '<h2>Pedido del ' . $pedido->getDatetime() . '</h2>';
+        $lines = LineRepository::getLinesById($pedido->getId());
+        foreach ($lines as $line) {
+            $product = ProductRepository::getProductById($line->getIdProduct());
+            echo $product->getName() . ' - Cantidad: ' . $line->getLot() . '<br>';
+        }
+        echo '<br>';
+        echo 'Precio total de la compra: ' . $pedido->getTotal() . '€';
+        echo '<br><br>';
+        echo '<a href="index.php?c=api&pedido=' . $pedido->getId() . '">Crear JSON</a><br>';
+    }
+    echo '<a href="index.php?c=api&carrito">Ver carrito</a><br>';
+    echo '<a href="index.php?c=api&allPedidos">Ver todos los pedidos</a><br>';
+    ?>
+    <a href="index.php">Volver a la tienda</a>
+</body>
+
+</html>
