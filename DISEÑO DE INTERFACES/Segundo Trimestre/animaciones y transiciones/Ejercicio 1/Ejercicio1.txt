@@ -1,0 +1,10 @@
+En el primer ejemplo, al posar el raton sobre el div, este se ensancha hasta un ancho de 400px.
+Al quitar el ratón vuelve a su sitio en 1 segundo.
+
+En el segundo ejemplo, al posar el raton sobre el div, este se ensancha hasta 400px (en 0,5 segundos)
+, después gana 100px de altura en 1 segundo y a continuación cambia de color de rojo a amarillo.
+El delay establecido en cada transición coincide con la duración total de las animaciones anteriores haciendo 
+que se vea fluido y sean una a continución de la otra.
+
+En el tercer ejemplo se establece una transición ease-in-out de 2 segundos. Cuando se posa el ratón, todos los 
+div dentro de un div con id="divloco" rotan 720 grados y duplican su escala.
