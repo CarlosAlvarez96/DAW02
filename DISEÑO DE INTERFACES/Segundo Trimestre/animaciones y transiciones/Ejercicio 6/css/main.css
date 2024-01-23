@@ -1,8 +1,6 @@
 .start {
-    text-align: center;
     font-size: 2em;
-    font-weight: bold;
-    margin: 5em;
+    margin: 5.8em;
 }
 
 #clock {
@@ -13,18 +11,19 @@
     left: 50%;
     margin: 5em 0 0 -189px;
 }
+
+#clock div {
+    position: absolute;
+}
+
 #clock img {
     position: absolute;
     transform: translate(-50%, -50%);
-    
-}
-#clock div {
-    position: absolute;
 }
 #hour, #minute, #second {
     background-color: black;
     position: absolute;
-    transform-origin: 50% 100%;
+    transform-origin: 100% 100%;
 }
 
 /* ANIMACIONES Y TRANSFORMACIONES */
@@ -36,15 +35,12 @@
 
 #hour.start {
     animation: rotate360 43200s infinite linear;
-    -webkit-animation: rotate360 43200s infinite linear;
 }
 
 #minute.start {
     animation: rotate360 3600s infinite linear;
-    -webkit-animation: rotate360 3600s infinite linear;
 }
 
 #second.start {
     animation: rotate360 60s infinite steps(60);
-    -webkit-animation: rotate360 60s infinite steps(60);
 }

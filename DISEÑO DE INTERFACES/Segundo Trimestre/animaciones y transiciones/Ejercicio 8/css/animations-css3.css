@@ -2,22 +2,23 @@ body {
     font-family: Comic Sans MS, sans-serif;
 }
 
-div#contenedor {
-    width: 950px;
-    margin: 0 auto;
+div#contenedor{
+	width: 950px;
+	margin: 0 auto;
+	
 }
 
-h2 {
-    text-align: center;
+h2{
+	text-align: center;
+	
 }
-
 div#animation {
     width: 950px;
     height: 500px;
     background: url("../img/background.png") no-repeat left top;
-    position: relative; /* Cambiado a relative para que las coordenadas de los hijos sean relativas a este contenedor */
-    overflow: hidden; /* Para ocultar la lluvia que cae fuera del contenedor */
+    position: relative;
     box-shadow: 0 0 15px #000;
+    overflow: hidden;
 }
 
 div#cloud {
@@ -26,22 +27,23 @@ div#cloud {
     background-image: url("../img/cloud.png");
     background-repeat: no-repeat;
     position: absolute;
-    right: -200px;
-    top: 20px;
+    left: 950px;
     opacity: 0;
-    animation: cloudEnter 5s ease-in-out forwards;
-    -webkit-animation: cloudEnter 5s ease-in-out forwards;
+    animation: cloudEnter 5s ease-in-out forwards, cloudExit 5s ease-in-out 15s forwards;
+    -webkit-animation: cloudEnter 5s ease-in-out forwards, cloudExit 5s ease-in-out 15s forwards;
 }
+
 
 div#rain {
     width: 200px;
     height: 400px;
     background-image: url("../img/rain-background.png");
     background-repeat: no-repeat;
-    margin: 65px 0 0 0;
-    position: absolute;
+    margin:65px 0 0 0;
+	position: absolute;
     opacity: 0;
     animation: fadeIn 5s ease-in-out 5s forwards, rainFall 10s ease-in-out 5s forwards, fadeOut 5s ease-in-out 11s forwards;
+
 }
 
 div#sun {
@@ -52,41 +54,44 @@ div#sun {
     top: 20px;
     left: 700px;
     opacity: 1;
-    animation: sunFade 5s ease-in-out forwards;
-    -webkit-animation: sunFade 5s ease-in-out forwards;
+    animation: sunFadeOut 5s ease-in-out forwards, sunFadeIn 5s ease-in-out 20s forwards;
+    -webkit-animation: sunFadeOut 5s ease-in-out forwards, sunFadeIn 5s ease-in-out 20s forwards;
 }
 
 div#flower {
     width: 90px;
     height: 130px;
     background-image: url("../img/flower.png");
-    background-repeat: no-repeat;
+    background-repeat:no-repeat;
     position: absolute;
     top: 185px;
     left: 430px;
     opacity: 0;
-   animation: flowerAppear 5s ease-in-out 20s forwards;
-    
+    animation: flowerAppear 5s ease-in-out 20s forwards;
 }
 
 @keyframes cloudEnter {
-    0% { right: -200px; opacity: 0; }
-    100% { right: 350px; opacity: 1; }
+    0% { left: 900px; opacity: 0; }
+    100% { left: 350px; opacity: 1; }
 }
+
 @keyframes cloudExit {
-    0%, 100% { right: -200px; opacity: 0; }
-    50% { right: -200px; opacity: 1; }
+    0% { left: 350px; opacity: 1; }
+    100% { left: -200px; opacity: 0; }
 }
+
 @keyframes rainFall {
     0% { top: -400px; }
     100% { top: 65px; }
 }
-
-@keyframes sunFade {
+@keyframes sunFadeOut {
     0%{ opacity: 1; }
     100% { opacity: 0.25; }
 }
-
+@keyframes sunFadeIn {
+    0%{ opacity: 0.25; }
+    100% { opacity: 1; }
+}
 @keyframes flowerAppear {
     0% { opacity: 0; }
     100% { opacity: 1; }
@@ -99,3 +104,8 @@ div#flower {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
+
+
+
+
+
