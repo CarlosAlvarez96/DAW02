@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imágenes Adaptables</title>
+    <style>
+      img {
+        width: 640px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Cambio de resolución: Mismo tamaño, diferentes resoluciones</h2>
+    <p>Define una imagen con el atributo srcset, que especifica tres versiones de la imagen con diferentes resoluciones. El atributo src proporciona una imagen predeterminada. El atributo alt proporciona un texto alternativo para la imagen en caso de que no se pueda cargar.</p>
+    <img
+      srcset="train640.jpg, train1280.jpg 2x, train1920.jpg x3"
+      src="train1920.jpg"
+      alt="Tren en diferentes resoluciones"
+    />
+  </body>
+</html>

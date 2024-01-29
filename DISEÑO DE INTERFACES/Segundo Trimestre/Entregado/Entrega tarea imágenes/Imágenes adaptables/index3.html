@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imágenes Adaptables</title>
+  </head>
+  <body>
+    <h2>Art direction: Dirección de arte</h2>
+    <p>Aquí se elige una imagen u otra según el ancho de la web</p>
+    <picture>
+      <source media="(max-width: 1279px)" srcset="train640.jpg" />
+      <source media="(min-width: 1281px)" srcset="train1280.jpg" />
+      <img src="train1280.jpg" alt="Tren en diferentes resoluciones" />
+    </picture>
+  </body>
+</html>

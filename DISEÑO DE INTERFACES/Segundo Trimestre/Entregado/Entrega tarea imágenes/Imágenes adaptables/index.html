@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imágenes Adaptables</title>
+  </head>
+  <body>
+    
+    <h2>Cambio de resolución: Diferentes tamaños</h2>
+    <p>En función del ancho definido en sizes se muestra una imagen del conjunto de 
+        imágenes definidos en srcset</p>
+    <img
+      srcset="
+        train640.jpg 640w,
+        train1280.jpg 1280w,
+        train1920.jpg 1920w
+      "
+      sizes="
+        (max-width: 1280px) 640px,
+        (max-width: 1920px) 1280px,
+         1920px
+      "
+      src="train1920.jpg"
+      alt="Tren en diferentes resoluciones"
+    />
+  </body>
+</html>
