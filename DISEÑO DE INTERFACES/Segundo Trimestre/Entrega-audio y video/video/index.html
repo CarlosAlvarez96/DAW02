@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Vídeo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        #videoForm {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #888888;
+            margin-bottom: 20px;
+        }
+
+        #videoPlayer {
+            max-width: 50vw;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #888888;
+        }
+    </style>
+</head>
+<body class="container mt-5">
+
+    <h1 class="mb-4">Reproductor de Vídeo</h1>
+
+    <form id="videoForm" class="mb-3">
+        <div class="form-group">
+            <label for="videoInput">Seleccionar archivo de vídeo:</label>
+            <input type="file" id="videoInput" class="form-control-file" accept="video/*">
+        </div>
+        <button type="button" class="btn btn-primary" onclick="cargarVideo()">Cargar Vídeo</button>
+    </form>
+
+    <video id="videoPlayer" class="mb-3" controls
+           onloadedmetadata="mostrarEvento('loadedmetadata')"
+           onloadeddata="mostrarEvento('loadeddata')"
+           oncanplay="mostrarEvento('canplay')"
+           oncanplaythrough="mostrarEvento('canplaythrough')"
+           onplay="mostrarEvento('play')"
+           onpause="mostrarEvento('pause')"
+           ontimeupdate="mostrarEvento('timeupdate')"
+           onended="reproducirSiguienteVideo()"
+           onerror="mostrarEvento('error')">
+        Tu navegador no soporta la etiqueta de vídeo.
+    </video>
+
+    <script>
+        let files = [];
+        let currentVideoIndex = 0;
+        let eventosContados = {};
+
+        function cargarVideo() {
+            const input = document.getElementById('videoInput');
+            const videoPlayer = document.getElementById('videoPlayer');
+
+            if (input.files.length > 0) {
+                const file = input.files[0];
+
+                // Verificar si el archivo de vídeo existe
+                if (file) {
+                    files.push(file);
+                    mostrarEvento('Archivo de vídeo cargado: ' + file.name);
+                    if (files.length === 1) {
+                        reproducirSiguienteVideo();
+                    }
+                } else {
+                    mostrarError('El fichero de vídeo no existe.');
+                }
+            }
+        }
+
+        function reproducirSiguienteVideo() {
+            const videoPlayer = document.getElementById('videoPlayer');
+
+            if (currentVideoIndex < files.length) {
+                const file = files[currentVideoIndex];
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    videoPlayer.src = e.target.result;
+                    videoPlayer.play();
+                    currentVideoIndex++;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                mostrarEvento('Todos los vídeos han sido reproducidos.');
+                currentVideoIndex = 0;
+                files = [];
+            }
+        }
+
+        function mostrarEvento(evento) {
+            if (eventosContados[evento]) {
+                eventosContados[evento]++;
+                const eventoPantalla = document.getElementById(evento.replace(/\s/g, '_'));
+                eventoPantalla.textContent = `${evento} (x${eventosContados[evento]})`;
+            } else {
+                eventosContados[evento] = 1;
+                const eventoPantalla = document.createElement('p');
+                eventoPantalla.id = evento.replace(/\s/g, '_');
+                eventoPantalla.textContent = `${evento} (x1)`;
+                document.body.appendChild(eventoPantalla);
+            }
+        }
+
+        function mostrarError(mensaje) {
+            const errorPantalla = document.createElement('p');
+            errorPantalla.textContent = 'Error: ' + mensaje;
+            document.body.appendChild(errorPantalla);
+        }
+    </script>
+</body>
+</html>
