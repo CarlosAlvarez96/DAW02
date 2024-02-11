@@ -3,10 +3,86 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Simple audio control with Bootstrap</title>
+  <title>Reproductor de audio oscuro</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #333;
+      color: #fff;
+    }
+
+    header, main {
+      background-color: #212121;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px;
+    }
+
+    .custom-player {
+      background-color: #424242;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .audio-info,
+    .time-display {
+      color: #bbb;
+      font-size: x-large;
+    }
+
+    .audio-controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+    .audio-controls>*{
+      margin: 10px;
+      background-color: #4CAF50; 
+    }
+
+    .btn-secondary,
+    .btn-success,
+    .btn-danger {
+      background-color: #757575;
+      border: none;
+    }
+
+    .img {
+      width: 100%;
+    }
+
+    .rotating {
+      animation: rotateLogo 5s infinite linear;
+    }
+
+    @keyframes rotateLogo {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .btn-secondary:hover,
+    .btn-success:hover,
+    .btn-danger:hover {
+      background-color: #616161;
+    }
+
+    #progressBar {
+      background-color: #4CAF50;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
 </head>
+
 <body>
   <header class="container d-flex flex-col justify-content-center align-items-center">
     <h1>Reproductor de audio</h1>
@@ -18,9 +94,7 @@
           <div class="audio-info">
             <span id="audioName">No file selected</span>
           </div>
-          <div class="time-display">
-            <span id="currentTime">00:00</span> - <span id="totalTime">00:00</span>
-          </div>
+          <img class="img" src="fuentes/img.png" alt="logo">
           <div class="audio-controls">
             <label for="fileInput" class="btn btn-secondary">Upload Audio</label>
             <input type="file" id="fileInput" accept="audio/*" style="display:none">
@@ -36,7 +110,10 @@
             <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
               aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <audio controlslist="nodownload" id="myAudio">
+          <div class="time-display">
+            <span id="currentTime">00:00</span> - <span id="totalTime">00:00</span>
+          </div>
+          <audio controlslist="nodownload" id="myAudio" onplay="startRotation()" onpause="stopRotation()">
             Your browser does not support the &lt;audio&gt; element.
           </audio>
         </div>
@@ -44,6 +121,7 @@
     </div>
   </main>
   <script src="main.js"></script>
+
 </body>
 
 </html>
