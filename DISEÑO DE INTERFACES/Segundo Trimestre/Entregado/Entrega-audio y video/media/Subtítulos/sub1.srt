@@ -1,0 +1,10 @@
+WEBVTT
+
+0:00:00.000 --> 0:00:02.000
+Aquí se ven los subtitulos
+
+0:00:03.000 --> 0:00:05.000
+Los vídeos son de licencia CC0
+
+0:00:06.000 --> 0:00:23.000
+Profe apruebame :)
