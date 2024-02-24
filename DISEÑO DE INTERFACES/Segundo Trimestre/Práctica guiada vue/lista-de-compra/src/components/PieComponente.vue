@@ -1,18 +1,16 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-    <footer>
-         <hr>
-        <p>Primer proyecto en VUE 3</p>
-    </footer> 
+  <footer>
+    <hr />
+    <p>Primer proyecto en VUE 3</p>
+  </footer>
 </template>
 
 <style scoped>
-    footer{
-        margin-top:30px;
-        text-align:center;
-        font-size:medium;
-    }
+footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: medium;
+}
 </style>
