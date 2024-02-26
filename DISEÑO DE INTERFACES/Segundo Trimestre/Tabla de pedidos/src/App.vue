@@ -6,14 +6,15 @@ import EncabezadoComponente from './components/EncabezadoComponente.vue';
 
 export default {
   data() {
-    return {
-      servicios: this.obtenerServiciosLocalStorage() || [],
-      precioTotal: 0
-    };
+  return {
+    servicios: this.obtenerServiciosLocalStorage() || [],
+    precioTotal: localStorage.getItem('total') ? parseFloat(localStorage.getItem('total')) : 0
+  };
   },
   methods: {
     actualizarPrecio(precio) {
       this.precioTotal = precio;
+      localStorage.setItem('total', precio);
     },
     actualizarServicios(servicios) {
       this.servicios = servicios;

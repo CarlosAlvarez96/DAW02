@@ -60,7 +60,6 @@
       <ul>
         <li v-for="(servicio, index) in servicios" :key="index">
           {{ servicio.nombre }} - {{ servicio.precio.toFixed(2) }} €
-          <button @click="editarServicio(index)">Editar</button>
           <button @click="eliminarServicio(index)">Eliminar</button>
         </li>
       </ul>

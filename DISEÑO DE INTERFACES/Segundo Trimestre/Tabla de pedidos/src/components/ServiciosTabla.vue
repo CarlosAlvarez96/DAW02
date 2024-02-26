@@ -25,13 +25,16 @@ export default {
     seleccionarServicio(servicio) {
       servicio.seleccionado = !servicio.seleccionado;
       this.$emit('seleccionado', this.calcularSubtotal());
+      this.actualizarServiciosLocalStorage(); // Guardar en localStorage
     },
     calcularSubtotal() {
       return this.servicios
         .filter(servicio => servicio.seleccionado)
         .reduce((total, servicio) => total + servicio.precio, 0);
+    },
+    actualizarServiciosLocalStorage() {
+      localStorage.setItem('servicios', JSON.stringify(this.servicios));
     }
   }
 };
 </script>
-
